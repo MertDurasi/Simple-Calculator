@@ -1,0 +1,41 @@
+.button {
+	-fx-background-radius: 0;
+	-fx-font: 17px "Calibri";
+	-fx-font-weight: lighter;
+}
+
+#number {
+	-fx-background-color: #fafafa;
+}
+
+#number:hover {
+	-fx-background-color: #dbdbdb;
+}
+
+#number:pressed {
+	-fx-background-color: #c5c5c5;
+}
+
+#other {
+	-fx-background-color: #f0f0f0
+}
+
+#other:hover {
+	-fx-background-color: #dfdfdf;
+}
+
+#other:pressed {
+	-fx-background-color: #b5b5b5;
+}
+
+#result {
+	-fx-background-color: #8abae0;
+}
+
+#result:hover {
+	-fx-background-color: #388bd1;
+}
+
+#result:pressed {
+	-fx-background-color: #0078d7;
+}
