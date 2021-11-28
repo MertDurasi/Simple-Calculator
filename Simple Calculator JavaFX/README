@@ -1,99 +1,99 @@
-EINFÜHRUNG------------------------------------------------------------------------------------
-Ein einfacher grafischer Taschenrechner lässt sich mit folgenden Funktionen zusammenfassen:
-1. Ein Ziffernblock, mit dem sich die aktuelle Zahl bearbeiten lässt.
-2. Text-Manipulationen, um die Form der aktuellen Zahl zu verändern.
+EINFÃœHRUNG------------------------------------------------------------------------------------
+Ein einfacher grafischer Taschenrechner lÃ¤sst sich mit folgenden Funktionen zusammenfassen:
+1. Ein Ziffernblock, mit dem sich die aktuelle Zahl bearbeiten lÃ¤sst.
+2. Text-Manipulationen, um die Form der aktuellen Zahl zu verÃ¤ndern.
 	Mitunter gibt es das Komma [,] oder den Backspace [BACK].
 3. Allgemeine mathematische Operationen.
 	In diesem Fall, da wir einen einfachen grafischen Taschenrechner programmieren,
-	fassen wir unsere Operationen als binäre Operationen auf. D.h. wir haben jeweils
+	fassen wir unsere Operationen als binÃ¤re Operationen auf. D.h. wir haben jeweils
 	pro Operation 2 Operanden als Argument und eine Instanz des selben Typs als Ausgabe.
 
 
-FUNKTIONALITÄT--------------------------------------------------------------------------------
+FUNKTIONALITÃ„T--------------------------------------------------------------------------------
 Zwischen einer Text-Manipulation und einer Operation bestehen wesentliche Unterschiede.
 
-Die Text-Manipulation verändert nur die aktuelle Zahl. Der Einfachheit halber verändern wir
-die Zahl direkt von der Anzeige als String. Schließlich müssen wir nur noch den angezeigten
+Die Text-Manipulation verÃ¤ndert nur die aktuelle Zahl. Der Einfachheit halber verÃ¤ndern wir
+die Zahl direkt von der Anzeige als String. SchlieÃŸlich mÃ¼ssen wir nur noch den angezeigten
 Text als eine Zahlenvariable speichern.
 
-Eine Operation ist wesentlich komplizierter. Ausgelöst wird die Operation selber erst, wenn
-man einen weiteren Operanden oder [=] eingegeben hat. Wir müssen also nicht nur den Operator
+Eine Operation ist wesentlich komplizierter. AusgelÃ¶st wird die Operation selber erst, wenn
+man einen weiteren Operanden oder [=] eingegeben hat. Wir mÃ¼ssen also nicht nur den Operator
 speichern, sondern auch das Ergebnis der Operation davor.
 
 
-Problemstellung: Wir haben verschiedene Fälle, wenn wir die Reihenfolge der Eingabe beachten.
+Problemstellung: Wir haben verschiedene FÃ¤lle, wenn wir die Reihenfolge der Eingabe beachten.
 (1) Wenn unser gespeicherter Operator [=] ist,
-	wird die aktuelle Zahl bei einer neuen Eingabe geändert.
+	wird die aktuelle Zahl bei einer neuen Eingabe geÃ¤ndert.
 (2) Wenn wir stattdessen einen weiteren Operator eingeben,
 	rechnen wir mit der aktuellen Zahl weiter.
 	
 (3) Wenn unser gespeicherter Operator [!=] ist,
 	wird durch eine neue Eingabe ein zweiter Operand angefordert.
 (4) Wenn wir stattdessen einen weiteren Operator eingeben,
-	verändern wir nur die bevorstehende Operation.
+	verÃ¤ndern wir nur die bevorstehende Operation.
 
 
 ZAHLENEINGABE---------------------------------------------------------------------------------
 Die Zahleneingabe soll nun eine Eingabe durch den Ziffernblock oder eines Text-Operators sein.
-Der Ziffernblock kann variabel abgearbeitet werden, während jeder Text-Operator im Einzelfall
+Der Ziffernblock kann variabel abgearbeitet werden, wÃ¤hrend jeder Text-Operator im Einzelfall
 behandelt werden muss. Beide unterliegen aber den selben Bedingungen.
 Wann unterscheiden wir eine neue Eingabe?
 
-Lösung: Wenn die gespeicherte Zahlenvariable null ist, wird die aktuelle Anzeige verworfen und
+LÃ¶sung: Wenn die gespeicherte Zahlenvariable null ist, wird die aktuelle Anzeige verworfen und
 es findet eine neue Eingabe statt. Ist sie nicht null, sind wir immer noch in der Bearbeitung
 der aktuellen Eingabe.
 
 
 OPERATIONEN-----------------------------------------------------------------------------------
-Fall (1) und (3) haben wir somit gelöst. Nach Drücken eines Operators wird die bevorstehende
-Operation ausgelöst. Durch diesen Vorgang wird das Ergebnis der Operation gespeichert und die
+Fall (1) und (3) haben wir somit gelÃ¶st. Nach DrÃ¼cken eines Operators wird die bevorstehende
+Operation ausgelÃ¶st. Durch diesen Vorgang wird das Ergebnis der Operation gespeichert und die
 gespeicherte Zahlenvariable auf null gesetzt. Wenn nun eine Zahleneingabe folgt, folgt eine
-neue Eingabe. Vergessen wir natürlich nicht, den gedrückten Operator zu speichern.
+neue Eingabe. Vergessen wir natÃ¼rlich nicht, den gedrÃ¼ckten Operator zu speichern.
 
-Fall (2) und (4) lösen wir, indem wir abfragen, ob denn bereits eine neue Eingabe erfolgt ist.
-Fall (4) Wenn also die gespeicherte Zahlenvariable null ist, können wir damit nicht rechnen.
-Aber da wir gerade einen Operator gedrückt haben, ändern wir trotzdem den Operator.
+Fall (2) und (4) lÃ¶sen wir, indem wir abfragen, ob denn bereits eine neue Eingabe erfolgt ist.
+Fall (4) Wenn also die gespeicherte Zahlenvariable null ist, kÃ¶nnen wir damit nicht rechnen.
+Aber da wir gerade einen Operator gedrÃ¼ckt haben, Ã¤ndern wir trotzdem den Operator.
 Fall (2) Ist die gespeicherte Zahlenvariable nun nicht null, bedeutet das, dass wir zu dem
 gespeicherten Ergebnis einer vorherigen Operation eine aktuelle Eingabe haben, die als einen
-weiteren Operand dient. Wir können nun die bevorstehende Operation auslösen.
+weiteren Operand dient. Wir kÃ¶nnen nun die bevorstehende Operation auslÃ¶sen.
 
-Beim Drücken eines Operators, wollen wir dem User auch anzeigen, mit welchem Operator er
-rechnen wird. Dafür zeigen wir einfach das Ergebnis der vorherigen Operation an plus den
-gedrückten Operator. Bei einem [=] zeigen wir natürlich keinen Operator an.
+Beim DrÃ¼cken eines Operators, wollen wir dem User auch anzeigen, mit welchem Operator er
+rechnen wird. DafÃ¼r zeigen wir einfach das Ergebnis der vorherigen Operation an plus den
+gedrÃ¼ckten Operator. Bei einem [=] zeigen wir natÃ¼rlich keinen Operator an.
 
 
 CONTROL---------------------------------------------------------------------------------------
 Control besitzt folgende Attribute:
 1. Result: Das Ergebnis einer Operation. Das wird der 1. Operand.
-2. Operand: Der 2. Operand, der den angezeigten Text repräsentieren soll. (Zahlenvariable)
-3. Operation: Ein funktionales Interface in der Form einer binären Operation.
-	Es speichert die nächste auszuführende Operation.
+2. Operand: Der 2. Operand, der den angezeigten Text reprÃ¤sentieren soll. (Zahlenvariable)
+3. Operation: Ein funktionales Interface in der Form einer binÃ¤ren Operation.
+	Es speichert die nÃ¤chste auszufÃ¼hrende Operation.
 
 	Calc:
-	Calc ist eine Klasse mit öffentlichen Methoden, die jegliche Operationen darstellen.
-	So können wir mit dem Interface auf diese referenzieren und müssen lediglich, die Methode
-	des Interfaces ausführen, wenn wir die nächste Operation berechnen wollen.
+	Calc ist eine Klasse mit Ã¶ffentlichen Methoden, die jegliche Operationen darstellen.
+	So kÃ¶nnen wir mit dem Interface auf diese referenzieren und mÃ¼ssen lediglich, die Methode
+	des Interfaces ausfÃ¼hren, wenn wir die nÃ¤chste Operation berechnen wollen.
 	
 Control besitzt folgende Methoden:
-1. Handler für jede individuelle Zahleneingabe.
-	Wenn die aktuelle Anzeige der View durch setText(String text) geändert wird, löst dies
+1. Handler fÃ¼r jede individuelle Zahleneingabe.
+	Wenn die aktuelle Anzeige der View durch setText(String text) geÃ¤ndert wird, lÃ¶st dies
 	eine Benachrichtigung an den Observer Control aus.
-2. Update: Methode von Observern, die ausgeführt wird, wenn sie benachrichtigt werden.
+2. Update: Methode von Observern, die ausgefÃ¼hrt wird, wenn sie benachrichtigt werden.
 	Die Aufgabe dieser Funktion ist, Operand zu aktualisieren.
-3. Handler für Operationen.
-	Immer wenn ein Operator gedrückt wurde, wird diese Methode ausgelöst.
-	Nur wenn Operand existiert (!null), wird Operation ausgelöst.
+3. Handler fÃ¼r Operationen.
+	Immer wenn ein Operator gedrÃ¼ckt wurde, wird diese Methode ausgelÃ¶st.
+	Nur wenn Operand existiert (!null), wird Operation ausgelÃ¶st.
 		Anmerkung:
 		Result existiert immer, da die Standard-Operation "equation" ist.
 		Dort wird Result = Operator gesetzt.
-	Operation wird immer neu gesetzt, abhängig von dem eingegebenen Operator.
-	Anschließend wird die Anzeige in Hinsicht des Operators geändert.
-		Dies soll Update nicht auslösen, da wir nach jeder Operation Operand auf null setzen.
+	Operation wird immer neu gesetzt, abhÃ¤ngig von dem eingegebenen Operator.
+	AnschlieÃŸend wird die Anzeige in Hinsicht des Operators geÃ¤ndert.
+		Dies soll Update nicht auslÃ¶sen, da wir nach jeder Operation Operand auf null setzen.
 
 
 KEYEVENT--------------------------------------------------------------------------------------
-Beim dem EventHandler ist es wichtig, dass der EventType auf "KEY_TYPED" gesetzt ist. Sonst
-können Eingaben mit [SHIFT]-Kombinationen nicht ordentlich angezeigt werden.
+Bei dem EventHandler ist es wichtig, dass der EventType auf "KEY_TYPED" gesetzt ist. Sonst
+kÃ¶nnen Eingaben mit [SHIFT]-Kombinationen nicht ordentlich angezeigt werden.
 
 
 
